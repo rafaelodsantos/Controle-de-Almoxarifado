@@ -51,7 +51,8 @@ def validar_int(pergunta):
     try:
       valor = int(input(pergunta))
     except ValueError:
-      print("Entrada inválida, digite apenas números inteiros")
+      print("\nEntrada inválida, digite apenas números inteiros\n")
+      continue
   
     if valor >= 0:
       return valor
@@ -83,12 +84,15 @@ def unidade_medida():
           continue
 
 def localizacao():
-  hc = validar_int("Defina onde está localizado:\n\nHC/Zona: ")
-  rua = validar_int("Em qual corredor/rua está localizado: ")
-  bloco = validar_int("Em qual bloco: ")
-  nivel = validar_int("Em qual nível: ")
-  localizacao = f"HC{hc}R{rua}B{bloco}N{nivel}"
-  return localizacao
+    try:
+        hc = validar_int("Defina onde está localizado:\n\nHC/Zona: ")
+        rua = validar_int("Em qual corredor/rua está localizado: ")
+        bloco = validar_int("Em qual bloco: ")
+        nivel = validar_int("Em qual nível: ")
+        localizacao = f"HC{hc}R{rua}B{bloco}N{nivel}"
+        return localizacao
+    except ValueError:
+        print("Entrada inválida, insira um valor numérico apenas.")
 
 def arrumar_data(data):
   data_convertida = datetime.strftime(data, "%d/%m/%Y %H:%M:%S")
